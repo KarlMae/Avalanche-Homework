@@ -8,6 +8,8 @@ export function postCalculation(body) {
       body: JSON.stringify(body)
     })
     .then(data => {
-      console.log(JSON.stringify(data));
+      return data.json().then(data => {
+        return data.result;
+      })
     })
 }

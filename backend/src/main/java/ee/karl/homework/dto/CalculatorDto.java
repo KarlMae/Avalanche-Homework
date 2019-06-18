@@ -1,4 +1,4 @@
-package ee.karl.homework.dtos;
+package ee.karl.homework.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ee.karl.homework.types.CalculatorOperation;
