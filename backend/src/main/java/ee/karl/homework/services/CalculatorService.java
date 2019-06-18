@@ -3,8 +3,6 @@ package ee.karl.homework.services;
 import ee.karl.homework.dtos.CalculatorDto;
 import org.springframework.stereotype.Service;
 
-import static ee.karl.homework.types.CalculatorOperation.*;
-
 @Service
 public class CalculatorService {
 
