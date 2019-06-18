@@ -18,11 +18,11 @@ public class CalculatorController {
     private final CalculatorService calculatorService;
 
     @GetMapping("calculate") protected Double calculatorPost(
-            @RequestParam("num1") Double num1,
-            @RequestParam("num2") Double num2,
+            @RequestParam("num1") Double number1,
+            @RequestParam("num2") Double number2,
             @RequestParam("op") CalculatorOperation operation
     ) {
-        return calculatorService.calculate(new CalculatorDto(num1, num2, operation));
+        return calculatorService.calculate(new CalculatorDto(number1, number2, operation));
     }
 
     @PostMapping("calculate")

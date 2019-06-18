@@ -3,11 +3,13 @@ package ee.karl.homework.services;
 import ee.karl.homework.dtos.CalculatorDto;
 import org.springframework.stereotype.Service;
 
+import static ee.karl.homework.types.CalculatorOperation.*;
+
 @Service
 public class CalculatorService {
 
     public Double calculate(CalculatorDto dto) {
-        switch(dto.getOp()) {
+        switch(dto.getOperation()) {
             case sum:
                 return addition(dto.getNumber1(), dto.getNumber2());
             case sub:
