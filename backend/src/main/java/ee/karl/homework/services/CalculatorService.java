@@ -18,20 +18,20 @@ public class CalculatorService {
         return dao.fetchPastCalculations();
     }
 
-    public OperationModel calculate(CalculatorDto dto) {
+    public Double calculate(CalculatorDto dto) {
         OperationModel operation = new OperationModel(dto);
 
-        switch(dto.getOperation()) {
-            case sum:
+        switch (dto.getOperation()) {
+            case ADDITION:
                 operation.setResult(addition(dto.getNumber1(), dto.getNumber2()));
                 break;
-            case sub:
+            case SUBTRACTION:
                 operation.setResult(subtraction(dto.getNumber1(), dto.getNumber2()));
                 break;
-            case prod:
+            case MULTIPLICATION:
                 operation.setResult(multiplication(dto.getNumber1(), dto.getNumber2()));
                 break;
-            case div:
+            case DIVISION:
                 operation.setResult(division(dto.getNumber1(), dto.getNumber2()));
                 break;
             default:
@@ -40,7 +40,7 @@ public class CalculatorService {
 
         dao.insertOperation(operation);
 
-        return operation;
+        return operation.getResult();
     }
 
     private Double addition(Double number1, Double number2) {

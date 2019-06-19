@@ -9,7 +9,16 @@ export function postCalculation(body) {
     })
     .then(data => {
       return data.json().then(data => {
-        return data.result;
+        return data;
       })
+    })
+}
+
+export function fetchPastCalculations() {
+  return fetch(process.env.REACT_APP_BACKEND_IP + '/fetchPastCalculations')
+    .then(response => {
+      return response.json().then(data => {
+        return data;
+      });
     })
 }

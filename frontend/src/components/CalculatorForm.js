@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import Button from '@material-ui/core/Button';
-import SplitButton from './SplitButton';
-import OutlinedInputAdornments from './TextField';
+import SplitButton from './RadioButtonsGroup';
+import OutlinedInput from './OutlinedInput';
 import {postCalculation} from '../services/calculatorService'
-
+import HistoryModal from './HistoryModal';
 
 class CalculatorForm extends Component {
 
@@ -13,7 +13,8 @@ class CalculatorForm extends Component {
       number1: "",
       number2: "",
       result: "",
-      operation: 'sum'
+      operation: 'sum',
+      showError: false
     };
 
     this.calculate = this.calculate.bind(this);
@@ -23,7 +24,11 @@ class CalculatorForm extends Component {
     const prevState = this.state;
     prevState[field] = parseFloat(event.target.value) || "";
 
-    this.setState(prevState)
+    this.setState(prevState);
+
+    if (this.state.number1 !== "" && this.state.number2 !== "") {
+      this.setState({ showError: false });
+    }
   }
 
   setOperation(operation) {
@@ -33,6 +38,11 @@ class CalculatorForm extends Component {
   }
 
   async calculate() {
+    if (this.state.number1 === "" || this.state.number2 === "") {
+      this.setState({ showError: true });
+      return;
+    }
+
     this.setState({
       result: await postCalculation(
         {
@@ -43,7 +53,6 @@ class CalculatorForm extends Component {
       )
     })
   }
-
   render() {
     return (
       <div className="calculator">
@@ -51,19 +60,19 @@ class CalculatorForm extends Component {
 
         <div className="calculator-form">
           <div className="input-fields">
-            <OutlinedInputAdornments
+            <OutlinedInput
               label="Number 1"
               controlName="number1"
               setNumber={(event, field) => this.setNumber(event, field)}
               value={this.state.number1}
             />
-            <OutlinedInputAdornments
+            <OutlinedInput
               label="Number 2"
               controlName="number2"
               value={this.state.number2}
               setNumber={(event, field) => this.setNumber(event, field)}
             />
-            <OutlinedInputAdornments
+            <OutlinedInput
               label="Output"
               value={this.state.result}
               disabled
@@ -75,14 +84,14 @@ class CalculatorForm extends Component {
           />
         </div>
 
+        {this.state.showError && (<h3 className="error-message">Both values must be filled in!</h3>)}
+
         <div className="calculator-buttons">
           <Button variant="contained" color="primary" onClick={() => this.calculate()}>
-            Calculate!
+            Calculate
           </Button>
 
-          <Button size="large">
-            Result history
-          </Button>
+          <HistoryModal/>
         </div>
       </div>
     )

@@ -1,7 +1,7 @@
 package ee.karl.homework.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ee.karl.homework.types.CalculatorOperation;
+import ee.karl.homework.types.CalculatorOperationEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +18,6 @@ public class CalculatorDto {
     private Double number2;
 
     @JsonProperty("op")
-    private CalculatorOperation operation;
+    private CalculatorOperationEnum operation;
 
 }

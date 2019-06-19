@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const OutlinedInputAdornments = (props) => {
+const OutlinedInput = (props) => {
   const classes = useStyles();
 
   return (
@@ -34,4 +34,4 @@ const OutlinedInputAdornments = (props) => {
   );
 };
 
-export default OutlinedInputAdornments;
+export default OutlinedInput;

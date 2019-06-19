@@ -1,10 +1,8 @@
 package ee.karl.homework.model;
 
 import ee.karl.homework.dto.CalculatorDto;
-import ee.karl.homework.types.CalculatorOperation;
+import ee.karl.homework.types.CalculatorOperationEnum;
 import lombok.Data;
-
-import javax.validation.constraints.NotNull;
 
 @Data
 public class OperationModel {
@@ -15,18 +13,10 @@ public class OperationModel {
         this.operation = calculatorDto.getOperation();
     }
 
-    @NotNull
     private Long id;
-
-    @NotNull
     private Double number1;
-
-    @NotNull
     private Double number2;
-
-    @NotNull
     private Double result;
+    private CalculatorOperationEnum operation;
 
-    @NotNull
-    private CalculatorOperation operation;
 }

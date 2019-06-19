@@ -9,8 +9,8 @@
             <dataSource type="POOLED">
                 <property name="driver" value="org.h2.Driver"/>
                 <property name="url" value="jdbc:h2:mem:test"/>
-                <property name="username" value="sa"/>
-                <property name="password" value=""/>
+                <property name="username" value="app_admin"/>
+                <property name="password" value="YEu7gUwZ4snAKhzC"/>
             </dataSource>
         </environment>
     </environments>
