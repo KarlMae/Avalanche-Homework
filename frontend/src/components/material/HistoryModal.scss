@@ -3,7 +3,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
-  width: 50%;
   background-color: #f0f0f0;
   padding: 2rem;
   -webkit-box-shadow: 10px 10px 14px 0 rgba(0, 0, 0, 0.18);
@@ -13,6 +12,10 @@
   max-height: 75%;
   overflow-x: hidden;
   display: inline-grid;
+
+  @media screen and (min-width: 900px) {
+    width: 50%;
+  }
 }
 
 .table {
