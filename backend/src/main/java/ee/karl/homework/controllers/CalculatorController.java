@@ -31,6 +31,7 @@ public class CalculatorController {
     }
 
     @GetMapping("fetchPastCalculations")
+    @ResponseBody
     public List<OperationModel> fetchPastCalculations() {
         return calculatorService.fetchPastCalculations();
     }

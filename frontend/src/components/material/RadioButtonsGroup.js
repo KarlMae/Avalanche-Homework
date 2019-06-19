@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -16,6 +16,9 @@ const useStyles = makeStyles(theme => ({
   group: {
     margin: theme.spacing(1, 0),
   },
+  legend: {
+    textAlign: 'left',
+  }
 }));
 
 const RadioButtonsGroup = (props) => {
@@ -24,7 +27,7 @@ const RadioButtonsGroup = (props) => {
   return (
     <div className={classes.root}>
       <FormControl component="fieldset" className={classes.formControl}>
-        <FormLabel component="legend">Operation</FormLabel>
+        <FormLabel component="legend" className={classes.legend}>Operation</FormLabel>
         <RadioGroup
           aria-label="Operation"
           name="operation"
@@ -32,10 +35,10 @@ const RadioButtonsGroup = (props) => {
           value={props.value}
           onChange={(event, value) => props.setOperation(value)}
         >
-          <FormControlLabel value="sum" control={<Radio />} label="Addition" />
-          <FormControlLabel value="sub" control={<Radio />} label="Subtraction" />
-          <FormControlLabel value="prod" control={<Radio />} label="Multiplication" />
-          <FormControlLabel value="div" control={<Radio />} label="Division" />
+          <FormControlLabel value="sum" control={<Radio/>} label="Addition"/>
+          <FormControlLabel value="sub" control={<Radio/>} label="Subtraction"/>
+          <FormControlLabel value="prod" control={<Radio/>} label="Multiplication"/>
+          <FormControlLabel value="div" control={<Radio/>} label="Division"/>
         </RadioGroup>
       </FormControl>
     </div>

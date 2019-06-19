@@ -19,5 +19,4 @@ public class CalculatorDto {
 
     @JsonProperty("op")
     private CalculatorOperationEnum operation;
-
 }

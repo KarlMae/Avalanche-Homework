@@ -1,0 +1,29 @@
+.modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 50%;
+  background-color: #f0f0f0;
+  padding: 2rem;
+  -webkit-box-shadow: 10px 10px 14px 0 rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 10px 10px 14px 0 rgba(0, 0, 0, 0.18);
+  box-shadow: 10px 10px 14px 0 rgba(0, 0, 0, 0.18);
+  outline: none;
+  max-height: 75%;
+  overflow-x: hidden;
+  display: inline-grid;
+}
+
+.table {
+  width: 100%;
+  margin-top: 1rem;
+  overflow-x: hidden;
+  min-width: 10rem;
+  max-height: 35rem;
+}
+
+.empty-table-message {
+  text-align: center;
+  padding: 1rem;
+}

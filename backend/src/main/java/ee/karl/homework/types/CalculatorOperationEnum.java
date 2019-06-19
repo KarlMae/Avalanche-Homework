@@ -19,6 +19,8 @@ public enum CalculatorOperationEnum {
         return code;
     }
 
+    public static String getStringForm(CalculatorOperationEnum operaion) { return operaion.name(); }
+
     public static CalculatorOperationEnum valueOfCode(String code) {
         for (CalculatorOperationEnum e : values()) {
             if (e.getCode().equals(code)) return e;
@@ -29,7 +31,6 @@ public enum CalculatorOperationEnum {
     @Override
     @JsonValue
     public String toString() {
-        return this.code;
+        return code;
     }
-
 }

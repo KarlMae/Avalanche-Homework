@@ -8,7 +8,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { fetchPastCalculations } from '../services/calculatorService'
+import {fetchPastCalculations} from '../../services/calculatorService'
+import './HistoryModal.scss';
+import { caseString } from '../../util/StringUtil'
 
 class HistoryModal extends Component {
 
@@ -52,8 +54,11 @@ class HistoryModal extends Component {
               Calculator history
             </Typography>
 
-            <Paper className="table">
-              <Table className="table">
+            <div className="table">
+            <Paper>
+              {
+                this.state.data.length ? (
+              <Table>
                 <TableHead>
                   <TableRow>
                     <TableCell align="center">Operation</TableCell>
@@ -62,20 +67,21 @@ class HistoryModal extends Component {
                     <TableCell align="right">Result</TableCell>
                   </TableRow>
                 </TableHead>
-                <TableBody>
-                  {this.state.data.map(row => (
-                    <TableRow key={row.ID}>
-                      <TableCell align="center">{row.OPERATION}</TableCell>
-                      <TableCell align="right">{row.NUMBER1}</TableCell>
-                      <TableCell align="right">{row.NUMBER2}</TableCell>
-                      <TableCell align="right">{row.RESULT}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
+                    <TableBody>
+                      { this.state.data.map(row =>
+                        <TableRow key={row.id}>
+                          <TableCell align="center">{caseString(row.operation)}</TableCell>
+                          <TableCell align="right">{row.number1}</TableCell>
+                          <TableCell align="right">{row.number2}</TableCell>
+                          <TableCell align="right">{row.result}</TableCell>
+                        </TableRow>
+                      )}
+                    </TableBody>
               </Table>
+                ) : <h2 className="empty-table-message"> No calculations have been made yet</h2>
+              }
             </Paper>
-
-
+            </div>
           </div>
         </Modal>
       </div>

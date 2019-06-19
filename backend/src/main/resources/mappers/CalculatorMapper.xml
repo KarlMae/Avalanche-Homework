@@ -3,7 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ee.karl.homework.dao.CalculatorDao">
-    <select id="fetchPastCalculations" resultType="hashmap">
+
+    <select id="fetchPastCalculations" resultType="ee.karl.homework.model.OperationModel">
       SELECT * FROM calculator.operations;
     </select>
 
@@ -11,4 +12,5 @@
         INSERT INTO calculator.operations (number1, number2, operation, result)
         VALUES (#{number1}, #{number2}, #{operation}, #{result})
   </insert>
+
 </mapper>

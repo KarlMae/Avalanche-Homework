@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import Button from '@material-ui/core/Button';
-import SplitButton from './RadioButtonsGroup';
-import OutlinedInput from './OutlinedInput';
-import {postCalculation} from '../services/calculatorService'
-import HistoryModal from './HistoryModal';
+import RadioButtonsGroup from '../material/RadioButtonsGroup';
+import OutlinedInput from '../material/OutlinedInput';
+import {postCalculation} from '../../services/calculatorService'
+import HistoryModal from '../material/HistoryModal';
+import './Calculator.scss';
 
-class CalculatorForm extends Component {
+class Calculator extends Component {
 
   constructor(props) {
     super(props);
@@ -14,45 +15,57 @@ class CalculatorForm extends Component {
       number2: "",
       result: "",
       operation: 'sum',
-      showError: false
+      error: false,
+      calculationProcessed: false
     };
 
     this.calculate = this.calculate.bind(this);
+    this.validateInput = this.validateInput.bind(this);
   }
 
   setNumber(event, field) {
     const prevState = this.state;
-    prevState[field] = parseFloat(event.target.value) || "";
+    prevState[field] = event.target.value;
+    prevState['error'] = false;
+    prevState['calculationProcessed'] = false;
 
     this.setState(prevState);
-
-    if (this.state.number1 !== "" && this.state.number2 !== "") {
-      this.setState({ showError: false });
-    }
   }
 
   setOperation(operation) {
     this.setState({
-      operation: operation
+      operation: operation,
+      calculationProcessed: false,
     })
   }
 
   async calculate() {
-    if (this.state.number1 === "" || this.state.number2 === "") {
-      this.setState({ showError: true });
+    await this.validateInput();
+
+    if (this.state.calculationProcessed || this.state.error) {
       return;
     }
 
     this.setState({
+      calculationProcessed: true,
       result: await postCalculation(
         {
           op: this.state.operation,
           num1: this.state.number1,
           num2: this.state.number2
         }
-      )
+      ),
     })
   }
+
+  validateInput() {
+    if (this.state.number1 === "" || this.state.number2 === "") {
+      this.setState({error: "Both values must be filled in!"});
+    } else if (isNaN(this.state.number1) || isNaN(this.state.number2)) {
+      this.setState({error: "Both values must be valid numbers!"});
+    }
+  }
+
   render() {
     return (
       <div className="calculator">
@@ -78,16 +91,23 @@ class CalculatorForm extends Component {
               disabled
             />
           </div>
-          <SplitButton
+
+          <RadioButtonsGroup
             value={this.state.operation}
             setOperation={(operation) => this.setOperation(operation)}
           />
+
         </div>
 
-        {this.state.showError && (<h3 className="error-message">Both values must be filled in!</h3>)}
+        {this.state.error && (<h3 className="error-message">{this.state.error}</h3>)}
 
         <div className="calculator-buttons">
-          <Button variant="contained" color="primary" onClick={() => this.calculate()}>
+          <Button
+            className="action-button"
+            variant="contained"
+            color="primary"
+            onClick={() => this.calculate()}
+          >
             Calculate
           </Button>
 
@@ -98,4 +118,4 @@ class CalculatorForm extends Component {
   }
 }
 
-export default CalculatorForm
+export default Calculator

@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
-import HomePage from './pages/HomePage/HomePage';
+import './App.scss';
+import HomePage from './pages/homepage/HomePage';
 import {CssBaseline} from '@material-ui/core';
 import {theme} from './style/theme'
 import {MuiThemeProvider} from '@material-ui/core/styles';

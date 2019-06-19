@@ -58,5 +58,4 @@ public class CalculatorService {
     private Double division(Double number1, Double number2) {
         return number1 / number2;
     }
-
 }

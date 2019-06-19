@@ -20,5 +20,4 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         f.addConverter(new CalculatorOperationEnumConverter());
         return f;
     }
-
 }

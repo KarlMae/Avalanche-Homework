@@ -151,5 +151,4 @@ public class CalculatorServiceTests {
 
         assertNotEquals(0, data.size());
     }
-
 }

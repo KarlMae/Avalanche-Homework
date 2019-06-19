@@ -1,0 +1,44 @@
+@import "../../style/variables";
+
+.calculator {
+  padding: 0 0 2rem;
+  margin: 2rem auto;
+  border: solid 2px $avalanche-red;
+  border-radius: 4px;
+  width: 40%;
+  -webkit-box-shadow: inset 0 0 30px -11px rgba(0, 0, 0, 0.23);
+  -moz-box-shadow: inset 0 0 30px -11px rgba(0, 0, 0, 0.23);
+  box-shadow: inset 0 0 30px -11px rgba(0, 0, 0, 0.23);
+}
+
+.calculator-form {
+  display: flex;
+  margin-bottom: 1rem;
+  height: 15rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculator-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.error-message {
+  color: $avalanche-red;
+  padding-bottom: 1rem;
+}
+
+.action-button {
+  width: 40%;
+}
+
+.MuiInputBase-input :disabled {
+  color: black;
+}

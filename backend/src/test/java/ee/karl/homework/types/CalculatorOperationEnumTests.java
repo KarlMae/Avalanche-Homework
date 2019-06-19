@@ -41,5 +41,4 @@ public class CalculatorOperationEnumTests {
                         calculatorOperationEnumConverter.convert("div")).getOperation()
         );
     }
-
 }
