@@ -74,21 +74,18 @@ class Calculator extends Component {
         <div className="calculator-form">
           <div className="input-fields">
             <OutlinedInput
-              id="number1"
               label="Number 1"
               controlName="number1"
               setNumber={(event, field) => this.setNumber(event, field)}
               value={this.state.number1}
             />
             <OutlinedInput
-              id="number2"
               label="Number 2"
               controlName="number2"
               value={this.state.number2}
               setNumber={(event, field) => this.setNumber(event, field)}
             />
             <OutlinedInput
-              id="output"
               label="Output"
               value={this.state.result}
               disabled
