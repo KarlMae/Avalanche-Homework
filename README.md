@@ -2,7 +2,7 @@
 This project is a full-stack application made for an assignment.
 
 It's a calculator that sends the user input to the backend service,
-saves the user query with the result and returns an answer
+saves the user query with the result and returns an answer.
 
 ##Frontend
 Frontend is built with react. 
@@ -23,4 +23,12 @@ project with *gradle build* and execute the jar in the build folder.
 I ran sonarqube on the project and fixed the vulnerabilities and code
 smells that it found for me. Unfortunately as of now I haven't gotten around
 to finding the logic behind code coverage and a 0% code coverage is failing
-the quality gate. Even though I have written unit tests.
+the quality gate. Even though I have written unit tests. Also I'm not sure
+how integration tests factor into that.
+
+##Integration tests
+Written using Selenium and Cucumber. Works with chrome and firefox.
+Just have to change the browser property in pom.xml
+
+Base is cloned from 
+https://github.com/bo32/spring-cucumber-selenium-sample

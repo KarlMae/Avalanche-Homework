@@ -142,7 +142,15 @@ public class CalculatorServiceTests {
     }
 
     @Test
-    @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
+    public void calculatorDivByZeroThrows() {
+        CalculatorDto dto = new CalculatorDto(10.5D, 2D, calculatorOperationEnumConverter.convert("div"));
+
+        Double answer = calculatorService.calculate(dto);
+
+        assertEquals(Double.valueOf(5.25), answer);
+    }
+
+    @Test
     public void calculatorRemembersPastCalculations() {
         CalculatorDto dto = new CalculatorDto(10.5D, 2D, calculatorOperationEnumConverter.convert("div"));
         calculatorService.calculate(dto);
