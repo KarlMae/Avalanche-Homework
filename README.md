@@ -30,5 +30,10 @@ how integration tests factor into that.
 Written using Selenium and Cucumber. Works with chrome and firefox.
 Just have to change the browser property in pom.xml
 
+To run it, have the frontend and backend application running and
+run CucumberRunnerTest.
+
+Supports Chrome version 74.
+
 Base is cloned from 
 https://github.com/bo32/spring-cucumber-selenium-sample
